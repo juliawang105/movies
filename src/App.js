@@ -6,8 +6,8 @@ import React, { useState, useEffect }from 'react';
 import { apiKey } from './key';
 import SearchBox from './components/SearchBox';
 import MovieListHeading from './components/movieListHeading';
-import MovieFaves from './components/movieFaves';
 import AddFavorite from './components/AddToFavorites';
+import RemoveFave from './components/removeFaves'
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -29,6 +29,11 @@ function App() {
     setFaves(newFaveList);
   }
 
+  const removeMovie = (movie) => {
+    const newMovies = faves.filter(mov => mov.imdbID !== movie.imdbID);
+    setFaves(newMovies)
+  }
+
   useEffect(() => {
     getMovieRequest(searchValue);
   }, [searchValue]);
@@ -43,7 +48,7 @@ function App() {
         <MovieList
           movies={movies}
           FavoriteComponent={AddFavorite}
-          addToFaves={addToFaves}
+          handleClick={addToFaves}
         />
       </div>
 
@@ -51,7 +56,11 @@ function App() {
         <MovieListHeading heading="Favourites" />
       </div>
       <div className="row">
-        <MovieFaves movies={faves} FavoriteComponent={AddFavorite} />
+        <MovieList
+          movies={faves}
+          FavoriteComponent={RemoveFave}
+          handleClick={removeMovie}
+        />
       </div>
     </div>
   );
