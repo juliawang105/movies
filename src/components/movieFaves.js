@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 
-function MovieList ({movies, FavoriteComponent, addToFaves}){
+function MovieFaves({ movies, FavoriteComponent, addToFaves }) {
+  debugger
   return (
     <>
       {movies.map((movie, index) => (
@@ -19,6 +20,6 @@ function MovieList ({movies, FavoriteComponent, addToFaves}){
       ))}
     </>
   );
-};
+}
 
-export default MovieList;
+export default MovieFaves;
