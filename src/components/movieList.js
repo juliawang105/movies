@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MovieList ({movies}){
+function MovieList ({movies, FavoriteComponent}){
   return (
     <>
       {movies.map((movie, index) => (
@@ -10,7 +10,7 @@ function MovieList ({movies}){
         >
           <img src={movie.Poster} alt="movie"></img>
           <div className="overlay d-flex align-items-center justify-content-center">
-            Add to Favourites
+           <FavoriteComponent />
           </div>
         </div>
       ))}

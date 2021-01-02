@@ -5,7 +5,9 @@ import MovieList from './components/movieList';
 import React, { useState, useEffect }from 'react';
 import { apiKey } from './key';
 import SearchBox from './components/SearchBox';
-import MovieListHeading from './components/movieListHeading'
+import MovieListHeading from './components/movieListHeading';
+import AddToFavorites from './components/AddToFavorites';
+import AddFavorite from './components/AddToFavorites';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -32,7 +34,7 @@ function App() {
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="row">
-        <MovieList movies={movies} />
+        <MovieList movies={movies} FavoriteComponent={AddFavorite}/>
       </div>
     </div>
   );
